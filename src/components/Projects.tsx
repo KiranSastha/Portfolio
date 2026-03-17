@@ -7,24 +7,32 @@ const projects = [
     description:
       "Designed a hydraulic-based solar tracking system to optimize panel efficiency by dynamically aligning with sunlight.",
     tech: ["Hydraulics", "Mechanical Design"],
+    github: "#",
+    demo: "#",
   },
   {
     title: "Smart Fertilizer System",
     description:
       "Machine learning-based system to predict optimal fertilizer usage, improving agricultural efficiency.",
     tech: ["Machine Learning", "IoT"],
+    github: "#",
+    demo: "#",
   },
   {
     title: "Waste Segregation System",
     description:
       "Automated waste sorting system using sensors to classify materials for efficient recycling.",
     tech: ["Sensors", "Embedded Systems"],
+    github: "#",
+    demo: "#",
   },
   {
     title: "ROS Autonomous Robot",
     description:
       "Developed an autonomous robot simulation using ROS, Gazebo, and RViz for navigation and mapping.",
     tech: ["ROS", "Gazebo", "RViz"],
+    github: "#",
+    demo: "#",
   },
 ];
 
@@ -73,77 +81,6 @@ const Projects = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </section>
-  );
-};
-
-const timelineData = [
-  {
-    year: "2023 – Present",
-    title: "B.E. Mechatronics Engineering",
-    place: "Paavai Engineering College, Namakkal",
-    details: [
-      "Currently pursuing with 7.54 CGPA",
-      "Applied theoretical knowledge through hands-on projects",
-    ],
-  },
-  {
-    year: "2021 – 2023",
-    title: "HSC",
-    place: "N.V.K.S Higher Secondary School, Attoor",
-    details: [
-      "Completed with 74.8%",
-      "Developed early interest in robotics and learned basics of ROS & Gazebo",
-    ],
-  },
-  {
-    year: "2020 – 2021",
-    title: "SSLC",
-    place: "N.V.K.S Senior Secondary School, Attoor",
-    details: [
-      "Completed with 72%",
-    ],
-  },
-];
-
-const Timeline = () => {
-  return (
-    <section id="timeline" className="px-6 md:px-20 py-24 bg-black text-white">
-
-      {/* Heading */}
-      <h2 className="text-4xl md:text-5xl font-bold mb-16">
-        My <span className="italic text-yellow-400">Journey</span>
-      </h2>
-
-      <div className="relative border-l border-gray-800">
-
-        {timelineData.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="mb-12 ml-6"
-          >
-            {/* Dot */}
-            <div className="absolute w-4 h-4 bg-yellow-400 rounded-full -left-2 border border-black"></div>
-
-            {/* Content */}
-            <p className="text-sm text-gray-500">{item.year}</p>
-
-            <h3 className="text-xl font-semibold mt-1">{item.title}</h3>
-            <p className="text-gray-400 text-sm mb-3">{item.place}</p>
-
-            <ul className="list-disc list-inside text-gray-400 space-y-1">
-              {item.details.map((d, i) => (
-                <li key={i}>{d}</li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-
       </div>
     </section>
   );
