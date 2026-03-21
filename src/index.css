@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================= BASE THEME ================= */
 @layer base {
   :root {
     --background: 220 20% 6%;
@@ -38,26 +39,20 @@
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
-
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 45 93% 58%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 220 12% 18%;
-    --sidebar-ring: 45 93% 58%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -65,13 +60,86 @@
   }
 }
 
+/* ================= UTILITIES ================= */
 @layer utilities {
+
+  /* Gradient text */
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(40, 100%, 72%));
   }
 
+  /* Section spacing */
   .section-padding {
     @apply px-6 py-24 md:px-12 lg:px-24 xl:px-32;
   }
+
+  /* Glow effects */
+  .glow {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.4);
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 25px hsla(var(--primary), 0.6);
+  }
+
+  /* Fade animation */
+  .fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  /* Background grid */
+  .background-grid {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= GLOBAL TRANSITIONS ================= */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(45, 100%, 65%);
+}
+
+/* ================= TEXT SELECTION ================= */
+::selection {
+  background: hsl(var(--primary));
+  color: black;
 }

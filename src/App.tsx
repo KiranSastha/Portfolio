@@ -6,7 +6,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Home */}
         <Route path="/" element={<Index />} />
+
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

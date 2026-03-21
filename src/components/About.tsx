@@ -7,7 +7,7 @@ const timelineData = [
     place: "Paavai Engineering College, Namakkal",
     details: [
       "Currently pursuing with 7.54 CGPA",
-      "Applied theoretical knowledge through hands-on projects",
+      "Focused on robotics, embedded systems, and automation",
     ],
   },
   {
@@ -16,16 +16,14 @@ const timelineData = [
     place: "N.V.K.S Higher Secondary School, Attoor",
     details: [
       "Completed with 74.8%",
-      "Developed early interest in robotics and learned basics of ROS & Gazebo",
+      "Developed strong interest in robotics and intelligent systems",
     ],
   },
   {
     year: "2020 – 2021",
     title: "SSLC",
     place: "N.V.K.S Senior Secondary School, Attoor",
-    details: [
-      "Completed with 72%",
-    ],
+    details: ["Completed with 72%"],
   },
 ];
 
@@ -35,24 +33,36 @@ const About = () => {
       
       <div className="grid lg:grid-cols-2 gap-20">
         
-        {/* LEFT SIDE - ABOUT + SKILLS */}
+        {/* LEFT SIDE */}
         <div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Driven by <span className="italic text-yellow-400">innovation</span> <br />
-            building the future of robotics
+            Building <span className="italic text-yellow-400">intelligent systems</span> <br />
+            for real-world problems
           </h2>
 
           <p className="text-gray-400 leading-relaxed mb-6">
-            I'm a Robotics & Embedded Systems Developer focused on designing 
-            intelligent, real-world solutions that combine hardware and software.
-            My work spans autonomous systems, IoT, and industrial automation.
+            I'm a Mechatronics Engineering student focused on designing and building 
+            intelligent systems that combine hardware and software. My work spans 
+            robotics, embedded systems, and automation.
           </p>
 
-          <p className="text-gray-400 leading-relaxed mb-10">
-            From developing hydraulic solar tracking systems to building ROS-based 
-            autonomous robots, I enjoy solving complex engineering problems and 
-            turning ideas into functional prototypes.
+          <p className="text-gray-400 leading-relaxed mb-8">
+            I enjoy solving real-world engineering problems — from developing 
+            hydraulic solar tracking systems to building computer vision-based 
+            attendance systems and smart automation solutions.
           </p>
+
+          {/* 🔥 CURRENTLY WORKING */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold mb-3 text-yellow-400">
+              Currently Working On
+            </h3>
+            <ul className="text-gray-400 space-y-2 text-sm">
+              <li>• Automated Waste Segregation System</li>
+              <li>• Improving embedded system design & integration</li>
+              <li>• Exploring real-world robotics applications</li>
+            </ul>
+          </div>
 
           {/* Skills */}
           <motion.div
@@ -63,12 +73,12 @@ const About = () => {
             className="grid grid-cols-2 gap-4"
           >
             {[
-              "Embedded Systems",
-              "Robotics",
+              "Embedded Systems (Arduino, ESP8266)",
+              "Robotics & Automation",
+              "Computer Vision (OpenCV)",
               "ROS / Gazebo",
               "IoT Systems",
-              "Machine Learning",
-              "Control Systems",
+              "Machine Learning (Basics)",
             ].map((skill) => (
               <div
                 key={skill}
