@@ -219,7 +219,7 @@ const Hero = () => {
           className="flex flex-wrap gap-4 mt-8"
         >
           <a
-            href="#projects"
+            href="#work"
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm uppercase tracking-wider bg-yellow-400 text-black transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5"
             onMouseEnter={(e) =>
               (e.currentTarget.style.boxShadow = "0 8px 30px rgba(245,200,66,0.3)")
