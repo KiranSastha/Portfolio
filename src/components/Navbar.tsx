@@ -12,7 +12,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ["about", "work", "contact"];
+      const sections = ["about", "work", "achievements", "contact"];
 
       for (let sec of sections) {
         const el = document.getElementById(sec);
@@ -50,7 +50,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="text-xl font-semibold tracking-wide">
-          Portfolio<span className="text-yellow-400">.</span>
+          Kiran<span className="text-yellow-400">.</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -68,6 +68,14 @@ const Navbar = () => {
           <a href="#work" className={linkClass("work")}>
             Projects
             {active === "work" && (
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-yellow-400"></span>
+            )}
+          </a>
+
+          {/* Achievements */}
+          <a href="#achievements" className={linkClass("achievements")}>
+            Achievements
+            {active === "achievements" && (
               <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-yellow-400"></span>
             )}
           </a>
@@ -98,7 +106,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Icon */}
         <div className="md:hidden">
-          <button onClick={() => setOpen(!open)}>
+          <button onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -114,6 +122,10 @@ const Navbar = () => {
 
           <a href="#work" onClick={() => setOpen(false)}>
             Projects
+          </a>
+
+          <a href="#achievements" onClick={() => setOpen(false)}>
+            Achievements
           </a>
 
           <a href="#contact" onClick={() => setOpen(false)}>

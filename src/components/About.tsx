@@ -36,8 +36,8 @@ const About = () => {
         {/* LEFT SIDE */}
         <div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Building <span className="italic text-yellow-400">intelligent systems</span> <br />
-            for real-world problems
+            From <span className="italic text-yellow-400">circuits to code</span> — <br />
+            engineering systems that matter
           </h2>
 
           <p className="text-gray-400 leading-relaxed mb-6">
@@ -73,18 +73,19 @@ const About = () => {
             className="grid grid-cols-2 gap-4"
           >
             {[
-              "Embedded Systems (Arduino, ESP8266)",
-              "Robotics & Automation",
-              "Computer Vision (OpenCV)",
-              "ROS / Gazebo",
-              "IoT Systems",
-              "Machine Learning (Basics)",
+              { label: "Embedded Systems (Arduino, ESP8266)", icon: "🔌" },
+              { label: "Robotics & Automation", icon: "🤖" },
+              { label: "Computer Vision (OpenCV)", icon: "👁️" },
+              { label: "ROS / Gazebo", icon: "🧭" },
+              { label: "IoT Systems", icon: "📡" },
+              { label: "Machine Learning (Basics)", icon: "🧠" },
             ].map((skill) => (
               <div
-                key={skill}
+                key={skill.label}
                 className="border border-gray-800 rounded-lg p-4 text-center hover:border-yellow-400 transition"
               >
-                <p className="text-sm text-gray-300">{skill}</p>
+                <span className="text-xl mb-1 block">{skill.icon}</span>
+                <p className="text-sm text-gray-300">{skill.label}</p>
               </div>
             ))}
           </motion.div>

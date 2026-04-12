@@ -82,7 +82,7 @@ const Section = ({ title, data }: any) => (
 
 const Achievements = () => {
   return (
-    <section id="achievements" className="px-6 md:px-20 py-24 bg-black text-white">
+    <section className="px-6 md:px-20 py-24 bg-black text-white">
 
       {/* Main Heading */}
       <h2 className="text-4xl font-bold mb-16">
