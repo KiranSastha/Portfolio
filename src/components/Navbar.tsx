@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      const sections = ["about", "work", "achievements", "contact"];
+      const sections = ["about", "experience", "work", "achievements", "contact"];
       for (let sec of sections) {
         const el = document.getElementById(sec);
         if (el) {
@@ -29,10 +29,19 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "About", href: "#about", section: "about" },
+    { label: "Experience", href: "#experience", section: "experience" },
     { label: "Projects", href: "#work", section: "work" },
     { label: "Achievements", href: "#achievements", section: "achievements" },
     { label: "Contact", href: "#contact", section: "contact" },
   ];
+
+  const linkStyle = (section: string) => ({
+    color: active === section ? "#f5c842" : "#6b7280",
+  });
+
+  const underlineStyle = (section: string) => ({
+    width: active === section ? "100%" : "0%",
+  });
 
   return (
     <>
@@ -44,7 +53,9 @@ const Navbar = () => {
           background: scrolled
             ? "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)"
             : "linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.09)" : "1px solid rgba(255,255,255,0.03)",
+          borderBottom: scrolled
+            ? "1px solid rgba(255,255,255,0.09)"
+            : "1px solid rgba(255,255,255,0.03)",
           boxShadow: scrolled
             ? "0 4px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07)"
             : "none",
@@ -70,29 +81,22 @@ const Navbar = () => {
                 <a
                   key={section}
                   href={href}
-                  className="relative text-xs uppercase tracking-widest font-medium transition-colors duration-200 group"
-                  style={{
-                    color: active === section ? "#f5c842" : "#6b7280",
-                  }}
+                  className="relative text-xs uppercase tracking-widest font-medium transition-colors duration-200 nav-link"
+                  style={linkStyle(section)}
+                  data-section={section}
                 >
                   {label}
                   <span
                     className="absolute left-0 -bottom-1 h-px bg-yellow-400 transition-all duration-300"
-                    style={{
-                      width: active === section ? "100%" : "0%",
-                    }}
+                    style={underlineStyle(section)}
                   />
-                  <style>{`
-                    a[href="${href}"]:hover { color: #f5c842; }
-                    a[href="${href}"]:hover span { width: 100% !important; }
-                  `}</style>
                 </a>
               ))}
             </div>
 
             <div className="w-px h-4 bg-white/10" />
 
-            {/* Open to Internships badge */}
+            {/* NIT Calicut badge */}
             <div
               className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border"
               style={{
@@ -103,7 +107,7 @@ const Navbar = () => {
             >
               <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
               <span className="tracking-wider uppercase" style={{ fontSize: "10px" }}>
-                Open to Internships
+                Intern @ NIT Calicut
               </span>
             </div>
 
@@ -157,7 +161,7 @@ const Navbar = () => {
               transition={{ duration: 0.2 }}
               className="md:hidden border-t"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(8,8,8,0.85) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(8,8,8,0.95) 100%)",
                 backdropFilter: "blur(28px) saturate(180%)",
                 WebkitBackdropFilter: "blur(28px) saturate(180%)",
                 borderColor: "rgba(255,255,255,0.08)",
@@ -171,7 +175,7 @@ const Navbar = () => {
                     href={href}
                     onClick={() => setOpen(false)}
                     className="text-sm uppercase tracking-widest transition-colors duration-200"
-                    style={{ color: active === section ? "#f5c842" : "#6b7280" }}
+                    style={linkStyle(section)}
                   >
                     {label}
                   </a>
@@ -189,7 +193,7 @@ const Navbar = () => {
                 >
                   <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
                   <span className="tracking-wider uppercase" style={{ fontSize: "10px" }}>
-                    Open to Internships
+                    Intern @ NIT Calicut
                   </span>
                 </div>
 
@@ -199,6 +203,14 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold px-4 py-2.5 rounded-md border self-start transition-all duration-200"
                   style={{ borderColor: "rgba(245,200,66,0.4)", color: "#f5c842" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#f5c842";
+                    e.currentTarget.style.color = "#000";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.color = "#f5c842";
+                  }}
                 >
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                     <path d="M4 2h6l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -227,6 +239,12 @@ const Navbar = () => {
         }
         .dot-breathe {
           animation: breathe 2s ease-in-out infinite;
+        }
+        .nav-link:hover {
+          color: #f5c842 !important;
+        }
+        .nav-link:hover span {
+          width: 100% !important;
         }
       `}</style>
     </>

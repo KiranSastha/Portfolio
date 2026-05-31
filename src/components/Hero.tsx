@@ -38,28 +38,19 @@ const Hero = () => {
       label: "Portfolio",
       href: "https://www.kiransk.me",
       icon: (
-          <svg 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="2" y1="12" x2="22" y2="12" />
-            <path d="M12 2a15 15 0 0 1 0 20" />
-            <path d="M12 2a15 15 0 0 0 0 20" />
-          </svg>
-            ),
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path d="M12 2a15 15 0 0 1 0 20" />
+          <path d="M12 2a15 15 0 0 0 0 20" />
+        </svg>
+      ),
     },
   ];
 
   const stats = [
     { num: "5", label: "Projects Built" },
-    { num: "2", label: "Conferences" },
+    { num: "2", label: "Internships" },
     { num: "6", label: "Certifications" },
   ];
 
@@ -94,15 +85,14 @@ const Hero = () => {
       <div
         className="pointer-events-none absolute bottom-[-200px] left-[-100px] w-[400px] h-[400px] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, rgba(250,200,50,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(250,200,50,0.06) 0%, transparent 70%)",
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl">
 
-        {/* Available Badge */}
+        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -115,7 +105,7 @@ const Hero = () => {
           }}
         >
           <span className="dot-breathe inline-block w-1.5 h-1.5 rounded-full bg-yellow-400" />
-          Open to Internships & Work
+          Research Intern @ NIT Calicut &nbsp;|&nbsp; Open to Work
         </motion.div>
 
         {/* Specialty Tags */}
@@ -125,10 +115,10 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="uppercase tracking-widest text-gray-500 text-xs mb-5"
         >
-          Robotics &nbsp;•&nbsp; Embedded Systems &nbsp;•&nbsp; PCB Design &nbsp;•&nbsp; Automation &nbsp;•&nbsp; PLC & SCADA
+          Robotics &nbsp;•&nbsp; Embedded Systems &nbsp;•&nbsp; SLAM &nbsp;•&nbsp; PCB Design &nbsp;•&nbsp; Automation
         </motion.p>
 
-        {/* Name — original bold font preserved */}
+        {/* Name */}
         <motion.h1
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -164,13 +154,13 @@ const Hero = () => {
             sequence={[
               "Robotic Systems",
               2000,
+              "SLAM & Navigation",
+              2000,
               "Embedded Solutions",
               2000,
               "Automation & Control",
               2000,
               "PCB & Hardware",
-              2000,
-              "PLC & SCADA",
               2000,
             ]}
             speed={60}
@@ -197,9 +187,9 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.42 }}
           className="mt-4 max-w-lg text-sm font-light leading-relaxed text-gray-500"
         >
-          Mechatronics undergrad with hands-on experience in robotics, embedded systems,
+          Mechatronics undergrad currently implementing SLAM for wheeled mobile
+          robots at NIT Calicut. Hands-on experience in robotics, embedded systems,
           and sensor-based automation. Presented at ICATS'25 and Techfinix'24.
-          Building systems that bridge hardware and intelligence.
         </motion.p>
 
         {/* Accent Divider */}
@@ -266,7 +256,7 @@ const Hero = () => {
             <a
               key={label}
               href={href}
-              target="_blank"
+              target={label === "Email" ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={label}
               className="text-gray-600 transition-all duration-200 hover:text-yellow-400 hover:-translate-y-0.5"
@@ -285,10 +275,7 @@ const Hero = () => {
         >
           {stats.map(({ num, label }) => (
             <div key={label}>
-              <div
-                className="text-3xl font-bold"
-                style={{ color: "#f0ece0" }}
-              >
+              <div className="text-3xl font-bold" style={{ color: "#f0ece0" }}>
                 {num}
                 <span className="text-yellow-400">+</span>
               </div>
@@ -311,18 +298,13 @@ const Hero = () => {
           <motion.div
             className="absolute inset-y-0 left-0 w-full bg-yellow-400"
             animate={{ x: ["-100%", "100%"] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1.5,
-            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
           />
         </div>
         Scroll to explore
       </motion.div>
 
-       <style>{`
+      <style>{`
         @keyframes breathe {
           0%, 100% {
             transform: scale(1);

@@ -3,56 +3,73 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- 🔥 Favicon -->
-    <link rel="icon" href="/favicon.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
 
-    <!-- 🔥 Responsive -->
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- 🔥 Title -->
-    <title>Kiran | Robotics & Embedded Systems Engineer</title>
-
-    <!-- 🔥 SEO Meta -->
-    <meta
-      name="description"
-      content="Portfolio of Kiran - Mechatronics Engineering student specializing in robotics, embedded systems, and automation. Explore projects in ROS, IoT, and intelligent systems."
-    />
-
-    <!-- 🔥 Keywords (optional but good) -->
-    <meta
-      name="keywords"
-      content="Kiran, Robotics Engineer, Embedded Systems, Mechatronics, Portfolio, ROS, IoT, Automation"
-    />
-
-    <!-- 🔥 Author -->
+    <!-- Primary Meta -->
+    <title>Kiran S K | Mechatronics Engineer — Robotics, SLAM & Embedded Systems</title>
+    <meta name="description" content="Portfolio of Kiran S K — Mechatronics Engineering student and Research Intern at NIT Calicut, specializing in SLAM, robotics, embedded systems, and automation. Explore projects in ROS2, OpenCV, IoT, and intelligent systems." />
+    <meta name="keywords" content="Kiran S K, Mechatronics Engineer, Robotics, SLAM, Embedded Systems, ROS2, OpenCV, IoT, Automation, NIT Calicut, Paavai Engineering College, Portfolio" />
     <meta name="author" content="S. K. Kiran" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080808" />
+    <link rel="canonical" href="https://kiransk.me" />
 
-    <!-- 🔥 Open Graph (for LinkedIn / WhatsApp preview) -->
-    <meta property="og:title" content="Kiran | Robotics Engineer Portfolio" />
-    <meta
-      property="og:description"
-      content="Building intelligent robotic and embedded systems. Explore my projects and engineering work."
-    />
+    <!-- Open Graph — LinkedIn, WhatsApp, Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://your-portfolio-link.com" />
-    <meta property="og:image" content="/preview.png" />
+    <meta property="og:url" content="https://kiransk.me" />
+    <meta property="og:title" content="Kiran S K | Mechatronics Engineer — Robotics, SLAM & Embedded Systems" />
+    <meta property="og:description" content="Research Intern at NIT Calicut working on SLAM for wheeled mobile robots. Building intelligent robotic and embedded systems. Explore projects and engineering work." />
+    <meta property="og:image" content="https://kiransk.me/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Kiran S K Portfolio" />
+    <meta property="og:locale" content="en_IN" />
 
-    <!-- 🔥 Twitter Preview -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kiran | Robotics Engineer Portfolio" />
-    <meta
-      name="twitter:description"
-      content="Explore my projects in robotics, embedded systems, and automation."
-    />
-    <meta name="twitter:image" content="/preview.png" />
+    <meta name="twitter:url" content="https://kiransk.me" />
+    <meta name="twitter:title" content="Kiran S K | Mechatronics Engineer — Robotics & SLAM" />
+    <meta name="twitter:description" content="Research Intern at NIT Calicut. Robotics, embedded systems, SLAM, and automation engineer. Explore my portfolio and projects." />
+    <meta name="twitter:image" content="https://kiransk.me/preview.png" />
+
+    <!-- Structured Data — JSON-LD for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kiran S K",
+      "url": "https://kiransk.me",
+      "email": "sasthakiran046@gmail.com",
+      "jobTitle": "Mechatronics Engineer",
+      "description": "Mechatronics Engineering student and Research Intern at NIT Calicut specializing in SLAM, robotics, and embedded systems.",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Paavai Engineering College"
+      },
+      "knowsAbout": ["Robotics", "SLAM", "Embedded Systems", "ROS2", "OpenCV", "IoT", "Automation"],
+      "sameAs": [
+        "https://www.linkedin.com/in/kiran-s-k/",
+        "https://github.com/KiranSastha"
+      ]
+    }
+    </script>
+
+    <!-- Performance: preconnect for Google Fonts if used -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   </head>
 
   <body>
     <div id="root"></div>
-
-    <!-- React App -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

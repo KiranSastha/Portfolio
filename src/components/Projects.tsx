@@ -3,10 +3,32 @@ import { useState, useEffect } from "react";
 
 const projects = [
   {
+    title: "SLAM for Wheeled Mobile Robots",
+    tag: "Robotics & Navigation",
+    description:
+      "Implementing Simultaneous Localization and Mapping for wheeled mobile robots at NIT Calicut -- covering map building, path planning, obstacle avoidance, and hardware validation.",
+    problem:
+      "Mobile robots operating in unknown environments need to simultaneously build a map and localize themselves within it -- a core unsolved challenge in autonomous navigation.",
+    solution:
+      "Developing and validating a SLAM algorithm on a physical wheeled robot platform under Dr. Rahul Radhakrishnan at NIT Calicut. Covers map building, localization, path planning with obstacle avoidance, and real-time motion control.",
+    role:
+      "Implementing the full SLAM pipeline -- from sensor data acquisition and map building to path planning logic and hardware-in-the-loop validation on a physical robot platform.",
+    tech: ["ROS2", "SLAM", "Python", "Robot Perception", "Embedded Control", "Path Planning"],
+    highlights: [
+      "Full SLAM pipeline: map building, localization, and path planning",
+      "Obstacle avoidance integrated into navigation stack",
+      "Hardware-in-the-loop validation on physical wheeled robot",
+      "Mentored by Dr. Rahul Radhakrishnan, Electrical Engineering, NIT Calicut",
+      "Part of NIT Calicut Summer Internship Programme 2026",
+    ],
+    status: "Ongoing",
+    image: "",
+  },
+  {
     title: "Waste Segregation System",
     tag: "Embedded & IoT",
     description:
-      "Automated waste classification using multi-sensor fusion — separating biodegradable, recyclable, and hazardous waste in real time.",
+      "Automated waste classification using multi-sensor fusion -- separating biodegradable, recyclable, and hazardous waste in real time.",
     problem:
       "Over 70% of urban waste is mixed at source, making recycling inefficient, increasing landfill load, and causing environmental pollution.",
     solution:
@@ -32,15 +54,15 @@ const projects = [
     description:
       "Semi-autonomous facial recognition attendance system with real-time detection pipeline and admin dashboard for analytics.",
     problem:
-      "Manual attendance systems consume 10–15 minutes per class, are prone to proxy entries, and lack centralized tracking.",
+      "Manual attendance systems consume 10--15 minutes per class, are prone to proxy entries, and lack centralized tracking.",
     solution:
-      "Built using OpenCV for face detection, feature extraction, and recognition in real time (~1–2 sec). Integrated web-based admin dashboard with attendance stats, logs, and multi-department tracking.",
+      "Built using OpenCV for face detection, feature extraction, and recognition in real time (~1--2 sec). Integrated web-based admin dashboard with attendance stats, logs, and multi-department tracking.",
     role:
-      "Designed end-to-end system, implemented the recognition pipeline (capture → processing → matching), and developed the admin dashboard UI with real-time updates.",
+      "Designed end-to-end system, implemented the recognition pipeline (capture, processing, matching), and developed the admin dashboard UI with real-time updates.",
     tech: ["OpenCV", "Python", "Face Recognition", "Web Dashboard"],
     highlights: [
-      "Real-time detection with ~85–95% accuracy in controlled lighting",
-      "Processing pipeline: Capture → Extract → Match (~1–2 sec latency)",
+      "Real-time detection with ~85--95% accuracy in controlled lighting",
+      "Processing pipeline: Capture, Extract, Match (~1--2 sec latency)",
       "Automated logging reduces attendance time by ~80%",
       "Dashboard supports 100+ students with attendance analytics",
       "Status indicators: Capturing, Processing, Match Found",
@@ -59,13 +81,13 @@ const projects = [
     solution:
       "Wheeled robotic platform with multi-DOF arm for targeted dispensing. ML model predicts optimal fertilizer quantity from soil sensor inputs and applies it at specific field locations.",
     role:
-      "Designed robotic platform and arm mechanism, handled embedded + ML integration, and contributed to fertilizer prediction logic.",
+      "Designed robotic platform and arm mechanism, handled embedded and ML integration, and contributed to fertilizer prediction logic.",
     tech: ["Machine Learning", "IoT", "Arduino", "Robotic Arm", "Automation"],
     highlights: [
       "4-wheel drive mobile robot for field navigation",
-      "Robotic arm with ~3–4 DOF for precise fertilizer placement",
+      "Robotic arm with ~3--4 DOF for precise fertilizer placement",
       "ML-based prediction for optimized fertilizer usage",
-      "Reduces fertilizer waste by ~20–30% (prototype estimate)",
+      "Reduces fertilizer waste by ~20--30% (prototype estimate)",
       "Scalable for smart farming and precision agriculture",
     ],
     image: "/images/fertilizer.jpg",
@@ -76,18 +98,18 @@ const projects = [
     description:
       "Semi-automated 1-axis solar tracking system using hydraulic actuation and gear mechanism to maximize energy capture.",
     problem:
-      "Fixed solar panels lose up to 30–40% efficiency due to improper alignment with the sun throughout the day.",
+      "Fixed solar panels lose up to 30--40% efficiency due to improper alignment with the sun throughout the day.",
     solution:
       "DC pump + hydraulic tubing creates controlled motion; gear mechanism enables ~90° panel rotation. Adjusts orientation based on sunlight direction.",
     role:
       "Designed and fabricated complete mechanical setup, integrated pump-driven actuation, and assembled control circuitry.",
     tech: ["Hydraulics", "Mechanical Design", "Gear Mechanism", "DC Pump", "Embedded Control"],
     highlights: [
-      "~20–25% improvement in solar exposure (prototype level)",
+      "~20--25% improvement in solar exposure (prototype level)",
       "1-axis rotation with ~90° tilt capability",
       "Powered by dual 3.7V Li-ion batteries (7.4V system)",
-      "Low-cost prototype under ₹1500",
-      "Compact design (~30cm × 25cm base)",
+      "Low-cost prototype under Rs.1500",
+      "Compact design (~30cm x 25cm base)",
     ],
     image: "/images/solar.jpg",
   },
@@ -96,12 +118,14 @@ const projects = [
 type Project = typeof projects[0];
 
 const tagColors: Record<string, string> = {
+  "Robotics & Navigation": "rgba(154,230,180,0.1)",
   "Embedded & IoT": "rgba(245,200,66,0.1)",
   "Computer Vision": "rgba(99,179,237,0.1)",
   "Robotics & ML": "rgba(154,230,180,0.1)",
   "Mechanical & Control": "rgba(252,129,74,0.1)",
 };
 const tagText: Record<string, string> = {
+  "Robotics & Navigation": "#9ae6b4",
   "Embedded & IoT": "#f5c842",
   "Computer Vision": "#63b3ed",
   "Robotics & ML": "#9ae6b4",
@@ -119,7 +143,6 @@ const Projects = () => {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // Lock body scroll when modal open
   useEffect(() => {
     document.body.style.overflow = selectedProject ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -156,7 +179,7 @@ const Projects = () => {
           className="text-xs uppercase tracking-widest mb-4"
           style={{ color: "#f5c842" }}
         >
-          — Projects
+          -- Projects
         </motion.p>
 
         {/* Heading */}
@@ -175,7 +198,7 @@ const Projects = () => {
             <span className="italic text-yellow-400">Projects</span>
           </h2>
           <p className="text-sm text-gray-500 max-w-xs md:text-right leading-relaxed">
-            Hardware meets intelligence — a selection of builds across robotics,
+            Hardware meets intelligence -- a selection of builds across robotics,
             automation, and embedded systems.
           </p>
         </motion.div>
@@ -188,7 +211,7 @@ const Projects = () => {
               onClick={() => setSelectedProject(p)}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               viewport={{ once: true }}
               className="group cursor-pointer rounded-xl p-7 border flex flex-col justify-between transition-all duration-300"
               style={{
@@ -196,9 +219,10 @@ const Projects = () => {
                 borderColor: "rgba(255,255,255,0.07)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(245,200,66,0.25)";
-                e.currentTarget.style.background = "rgba(245,200,66,0.03)";
-                e.currentTarget.style.boxShadow = "0 8px 40px rgba(245,200,66,0.07)";
+                const color = tagText[p.tag] ?? "#f5c842";
+                e.currentTarget.style.borderColor = color + "33";
+                e.currentTarget.style.background = color + "06";
+                e.currentTarget.style.boxShadow = "0 8px 40px " + color + "10";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
@@ -209,22 +233,32 @@ const Projects = () => {
               {/* Top row */}
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <span
-                    className="text-xs px-2.5 py-1 rounded-full uppercase tracking-wider"
-                    style={{
-                      background: tagColors[p.tag] ?? "rgba(245,200,66,0.08)",
-                      color: tagText[p.tag] ?? "#f5c842",
-                      border: `1px solid ${tagText[p.tag] ?? "#f5c842"}22`,
-                    }}
-                  >
-                    {p.tag}
-                  </span>
-                  {p.status && (
-                    <span className="flex items-center gap-1.5 text-xs text-gray-500">
-                      <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                      {p.status}
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-xs px-2.5 py-1 rounded-full uppercase tracking-wider"
+                      style={{
+                        background: tagColors[p.tag] ?? "rgba(245,200,66,0.08)",
+                        color: tagText[p.tag] ?? "#f5c842",
+                        border: `1px solid ${tagText[p.tag] ?? "#f5c842"}22`,
+                      }}
+                    >
+                      {p.tag}
                     </span>
-                  )}
+                  </div>
+                  <div className="flex items-center gap-3">
+                    {p.status && (
+                      <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                        <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                        {p.status}
+                      </span>
+                    )}
+                    <span
+                      className="text-xs font-mono"
+                      style={{ color: "rgba(255,255,255,0.1)" }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
                 </div>
 
                 <h3
@@ -271,7 +305,7 @@ const Projects = () => {
               {/* CTA */}
               <div
                 className="flex items-center gap-2 mt-7 text-xs uppercase tracking-widest transition-all duration-300 group-hover:gap-3"
-                style={{ color: "#f5c842" }}
+                style={{ color: tagText[p.tag] ?? "#f5c842" }}
               >
                 <span>View Details</span>
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -283,7 +317,7 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* ── MODAL ── */}
+      {/* MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -376,10 +410,10 @@ const Projects = () => {
                     {[
                       { label: "Problem", content: selectedProject.problem },
                       { label: "Solution", content: selectedProject.solution },
-                      { label: "My Role", content: selectedProject.role },
+                      { label: "Contribution", content: selectedProject.role },
                     ].map(({ label, content }) => content && (
                       <div key={label}>
-                        <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#f5c842" }}>
+                        <p className="text-xs uppercase tracking-widest mb-2" style={{ color: tagText[selectedProject.tag] ?? "#f5c842" }}>
                           {label}
                         </p>
                         <p className="text-sm text-gray-400 leading-relaxed">{content}</p>
@@ -389,16 +423,18 @@ const Projects = () => {
 
                   {/* RIGHT */}
                   <div className="space-y-6">
-                    {/* Highlights */}
                     {selectedProject.highlights && (
                       <div>
-                        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#f5c842" }}>
+                        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: tagText[selectedProject.tag] ?? "#f5c842" }}>
                           Key Highlights
                         </p>
                         <ul className="space-y-2">
                           {selectedProject.highlights.map((h, i) => (
                             <li key={i} className="flex items-start gap-2.5 text-sm text-gray-400">
-                              <span className="mt-2 w-1 h-1 rounded-full bg-yellow-400 shrink-0" />
+                              <span
+                                className="mt-2 w-1 h-1 rounded-full shrink-0"
+                                style={{ background: tagText[selectedProject.tag] ?? "#f5c842" }}
+                              />
                               {h}
                             </li>
                           ))}
@@ -406,9 +442,8 @@ const Projects = () => {
                       </div>
                     )}
 
-                    {/* Tech Stack */}
                     <div>
-                      <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#f5c842" }}>
+                      <p className="text-xs uppercase tracking-widest mb-3" style={{ color: tagText[selectedProject.tag] ?? "#f5c842" }}>
                         Tech Stack
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -428,7 +463,6 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    {/* Actions */}
                     {selectedProject.github && (
                       <div className="pt-2">
                         <a
@@ -436,15 +470,15 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold px-5 py-2.5 rounded-md border transition-all duration-200 hover:-translate-y-0.5"
-                          style={{ borderColor: "rgba(245,200,66,0.4)", color: "#f5c842" }}
+                          style={{ borderColor: (tagText[selectedProject.tag] ?? "#f5c842") + "66", color: tagText[selectedProject.tag] ?? "#f5c842" }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.background = "#f5c842";
+                            e.currentTarget.style.background = tagText[selectedProject.tag] ?? "#f5c842";
                             e.currentTarget.style.color = "#000";
-                            e.currentTarget.style.boxShadow = "0 4px 20px rgba(245,200,66,0.2)";
+                            e.currentTarget.style.boxShadow = "0 4px 20px " + (tagText[selectedProject.tag] ?? "#f5c842") + "33";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.background = "transparent";
-                            e.currentTarget.style.color = "#f5c842";
+                            e.currentTarget.style.color = tagText[selectedProject.tag] ?? "#f5c842";
                             e.currentTarget.style.boxShadow = "none";
                           }}
                         >

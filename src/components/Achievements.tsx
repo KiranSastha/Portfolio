@@ -51,7 +51,7 @@ const events = [
     title: "ICATS'25 International Conference",
     provider: "Paavai Engineering College, Namakkal",
     description:
-      'Presented the Smart Fertilizer Application System Using Machine Learning -- CNN-based plant disease detection with IoT-enabled automation.',
+      "Presented the Smart Fertilizer Application System Using Machine Learning -- CNN-based plant disease detection with IoT-enabled automation.",
     type: "Conference",
     color: "#f5c842",
   },
@@ -60,20 +60,9 @@ const events = [
     title: "Techfinix'24 Technical Symposium",
     provider: "Paavai Engineering College, Namakkal",
     description:
-      'Presented the Alignment of Solar Panel using Hydraulics -- autonomous hydraulic actuation and efficiency-oriented solar tracking.',
+      "Presented the Alignment of Solar Panel using Hydraulics -- autonomous hydraulic actuation and efficiency-oriented solar tracking.",
     type: "Symposium",
     color: "#63b3ed",
-  },
-];
-
-const experience = [
-  {
-    date: "07/2025 - 08/2025",
-    title: "Solar and Water Systems Intern",
-    provider: "SWOT Solar, Udumalaippettai",
-    description:
-      "Analyzed PV system configurations, assisted in system sizing and component selection, and studied real-world deployment challenges of renewable energy systems.",
-    color: "#fc814a",
   },
 ];
 
@@ -106,8 +95,7 @@ const Achievements = () => {
       <div
         className="pointer-events-none absolute bottom-0 left-[-100px] w-[400px] h-[400px] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, rgba(250,200,50,0.05) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(250,200,50,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -149,83 +137,11 @@ const Achievements = () => {
           presentations across robotics, ML, and embedded systems.
         </motion.p>
 
-        {/* EXPERIENCE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <p className="text-xs uppercase tracking-widest text-gray-600 mb-6">
-            Experience
-          </p>
-          <div className="space-y-4">
-            {experience.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="flex gap-5 p-6 rounded-xl border transition-all duration-300 group"
-                style={{
-                  background: "rgba(255,255,255,0.02)",
-                  borderColor: "rgba(255,255,255,0.07)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = item.color + "44";
-                  (e.currentTarget as HTMLDivElement).style.background = item.color + "08";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)";
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.02)";
-                }}
-              >
-                <div
-                  className="mt-1 w-9 h-9 rounded-lg shrink-0 flex items-center justify-center"
-                  style={{ background: item.color + "18" }}
-                >
-                  <StarIcon color={item.color} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between gap-4 flex-wrap">
-                    <div>
-                      <h4
-                        className="text-base font-semibold"
-                        style={{ color: "#f0ece0" }}
-                      >
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {item.provider}
-                      </p>
-                    </div>
-                    <span
-                      className="text-xs px-2.5 py-1 rounded-full shrink-0"
-                      style={{
-                        background: item.color + "18",
-                        color: item.color,
-                        border: "1px solid " + item.color + "33",
-                      }}
-                    >
-                      {item.date}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-3 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* EVENTS */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
           className="mb-16"
         >
@@ -248,10 +164,12 @@ const Achievements = () => {
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLDivElement).style.borderColor = item.color + "44";
                   (e.currentTarget as HTMLDivElement).style.background = item.color + "08";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 30px " + item.color + "10";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.07)";
                   (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.02)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
                 }}
               >
                 <div
@@ -261,7 +179,7 @@ const Achievements = () => {
                   <StarIcon color={item.color} />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-start justify-between gap-3 flex-wrap mb-2">
+                  <div className="flex items-start justify-between gap-3 flex-wrap mb-3">
                     <span
                       className="text-xs px-2.5 py-1 rounded-full"
                       style={{
@@ -294,7 +212,7 @@ const Achievements = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           viewport={{ once: true }}
         >
           <p className="text-xs uppercase tracking-widest text-gray-600 mb-6">
