@@ -1,4 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import ParticleField from "./ParticleField";
+import RobotModel from "./RobotModel";
 import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
@@ -69,6 +71,9 @@ const Hero = () => {
         }}
       />
 
+      {/* Particle Field */}
+      <ParticleField />
+
       {/* Primary Glow Orb */}
       <motion.div
         className="pointer-events-none absolute top-[-120px] right-[-80px] w-[520px] h-[520px] rounded-full"
@@ -89,203 +94,223 @@ const Hero = () => {
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl">
+      {/* Content — 2 column on large screens */}
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-12">
 
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border text-xs uppercase tracking-widest"
-          style={{
-            background: "rgba(250,200,50,0.08)",
-            borderColor: "rgba(250,200,50,0.2)",
-            color: "#f5c842",
-          }}
-        >
-          <span className="dot-breathe inline-block w-1.5 h-1.5 rounded-full bg-yellow-400" />
-          Research Intern @ NIT Calicut &nbsp;|&nbsp; Open to Work
-        </motion.div>
+        {/* ── Left column ── */}
+        <div className="flex-1 max-w-2xl">
 
-        {/* Specialty Tags */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.05 }}
-          className="uppercase tracking-widest text-gray-500 text-xs mb-5"
-        >
-          Robotics &nbsp;•&nbsp; Embedded Systems &nbsp;•&nbsp; SLAM &nbsp;•&nbsp; PCB Design &nbsp;•&nbsp; Automation
-        </motion.p>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border text-xs uppercase tracking-widest"
+            style={{
+              background: "rgba(250,200,50,0.08)",
+              borderColor: "rgba(250,200,50,0.2)",
+              color: "#f5c842",
+            }}
+          >
+            <span className="dot-breathe inline-block w-1.5 h-1.5 rounded-full bg-yellow-400" />
+            Research Intern @ NIT Calicut &nbsp;|&nbsp; Open to Work
+          </motion.div>
 
-        {/* Name */}
-        <motion.h1
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-bold leading-tight"
-          style={{ color: "#f0ece0", letterSpacing: "-0.02em" }}
-        >
-          S. K.{" "}
-          <span className="text-yellow-400 italic">Kiran</span>
-        </motion.h1>
+          {/* Specialty Tags */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="uppercase tracking-widest text-gray-500 text-xs mb-5"
+          >
+            Robotics &nbsp;•&nbsp; Embedded Systems &nbsp;•&nbsp; SLAM &nbsp;•&nbsp; PCB Design &nbsp;•&nbsp; Automation
+          </motion.p>
 
-        {/* College & Degree */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.18 }}
-          className="mt-2 text-xs uppercase tracking-widest"
-          style={{ color: "#444" }}
-        >
-          B.E Mechatronics Engineering &nbsp;·&nbsp; Paavai Engineering College &nbsp;·&nbsp; Class of 2027
-        </motion.p>
+          {/* Name */}
+          <motion.h1
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold leading-tight"
+            style={{ color: "#f0ece0", letterSpacing: "-0.02em" }}
+          >
+            S. K.{" "}
+            <span className="text-yellow-400 italic">Kiran</span>
+          </motion.h1>
 
-        {/* Typing Role Line */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-6 flex items-center gap-2 text-base md:text-lg font-light text-gray-400"
-        >
-          <span>Engineering</span>
-          <span className="text-yellow-400 opacity-50">/</span>
-          <TypeAnimation
-            sequence={[
-              "Robotic Systems",
-              2000,
-              "SLAM & Navigation",
-              2000,
-              "Embedded Solutions",
-              2000,
-              "Automation & Control",
-              2000,
-              "PCB & Hardware",
-              2000,
-            ]}
-            speed={60}
-            repeat={Infinity}
-            className="text-yellow-400 font-normal"
+          {/* College & Degree */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mt-2 text-xs uppercase tracking-widest"
+            style={{ color: "#444" }}
+          >
+            B.E Mechatronics Engineering &nbsp;·&nbsp; Paavai Engineering College &nbsp;·&nbsp; Class of 2027
+          </motion.p>
+
+          {/* Typing Role Line */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-6 flex items-center gap-2 text-base md:text-lg font-light text-gray-400"
+          >
+            <span>Engineering</span>
+            <span className="text-yellow-400 opacity-50">/</span>
+            <TypeAnimation
+              sequence={[
+                "Robotic Systems",
+                2000,
+                "SLAM & Navigation",
+                2000,
+                "Embedded Solutions",
+                2000,
+                "Automation & Control",
+                2000,
+                "PCB & Hardware",
+                2000,
+              ]}
+              speed={60}
+              repeat={Infinity}
+              className="text-yellow-400 font-normal"
+            />
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mt-4 text-base md:text-lg font-light italic"
+            style={{ color: "#555" }}
+          >
+            "Engineering intelligence into machines — from sensor to system."
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.42 }}
+            className="mt-4 max-w-lg text-sm font-light leading-relaxed text-gray-500"
+          >
+            Mechatronics undergrad currently implementing SLAM for wheeled mobile
+            robots at NIT Calicut. Hands-on experience in robotics, embedded systems,
+            and sensor-based automation. Presented at ICATS&apos;25 and Techfinix&apos;24.
+          </motion.p>
+
+          {/* Accent Divider */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-8 h-px w-14 origin-left"
+            style={{ background: "linear-gradient(90deg, #f5c842, transparent)" }}
           />
-        </motion.div>
 
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-4 text-base md:text-lg font-light italic"
-          style={{ color: "#555" }}
-        >
-          "Engineering intelligence into machines — from sensor to system."
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.42 }}
-          className="mt-4 max-w-lg text-sm font-light leading-relaxed text-gray-500"
-        >
-          Mechatronics undergrad currently implementing SLAM for wheeled mobile
-          robots at NIT Calicut. Hands-on experience in robotics, embedded systems,
-          and sensor-based automation. Presented at ICATS'25 and Techfinix'24.
-        </motion.p>
-
-        {/* Accent Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 h-px w-14 origin-left"
-          style={{ background: "linear-gradient(90deg, #f5c842, transparent)" }}
-        />
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap gap-4 mt-8"
-        >
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm uppercase tracking-wider bg-yellow-400 text-black transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5"
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow = "0 8px 30px rgba(245,200,66,0.3)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow = "none")
-            }
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-wrap gap-4 mt-8"
           >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            View Projects
-          </a>
-
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-sm text-gray-400 border transition-all duration-200 hover:text-yellow-400 hover:-translate-y-0.5"
-            style={{ borderColor: "rgba(255,255,255,0.12)" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.borderColor = "rgba(245,200,66,0.4)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)")
-            }
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M4 2h6l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M10 2v4h4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            View Resume
-          </a>
-        </motion.div>
-
-        {/* Social Icons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex items-center gap-5 mt-6"
-        >
-          {socials.map(({ label, href, icon }) => (
             <a
-              key={label}
-              href={href}
-              target={label === "Email" ? undefined : "_blank"}
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="text-gray-600 transition-all duration-200 hover:text-yellow-400 hover:-translate-y-0.5"
+              href="#work"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm uppercase tracking-wider bg-yellow-400 text-black transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5"
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.boxShadow = "0 8px 30px rgba(245,200,66,0.3)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.boxShadow = "none")
+              }
             >
-              {icon}
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              View Projects
             </a>
-          ))}
-        </motion.div>
 
-        {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-wrap gap-14 mt-14 mb-6"
-        >
-          {stats.map(({ num, label }) => (
-            <div key={label}>
-              <div className="text-3xl font-bold" style={{ color: "#f0ece0" }}>
-                {num}
-                <span className="text-yellow-400">+</span>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-sm text-gray-400 border transition-all duration-200 hover:text-yellow-400 hover:-translate-y-0.5"
+              style={{ borderColor: "rgba(255,255,255,0.12)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = "rgba(245,200,66,0.4)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)")
+              }
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M4 2h6l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M10 2v4h4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              View Resume
+            </a>
+          </motion.div>
+
+          {/* Social Icons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex items-center gap-5 mt-6"
+          >
+            {socials.map(({ label, href, icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={label === "Email" ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-gray-600 transition-all duration-200 hover:text-yellow-400 hover:-translate-y-0.5"
+              >
+                {icon}
+              </a>
+            ))}
+          </motion.div>
+
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-wrap gap-14 mt-14 mb-6"
+          >
+            {stats.map(({ num, label }, i) => (
+              <div key={label} className="relative">
+                {/* subtle separator between stats */}
+                {i !== 0 && (
+                  <div
+                    className="absolute -left-7 top-1/2 -translate-y-1/2 w-px h-8"
+                    style={{ background: "rgba(255,255,255,0.06)" }}
+                  />
+                )}
+                <div className="text-3xl font-bold" style={{ color: "#f0ece0" }}>
+                  {num}
+                  <span className="text-yellow-400">+</span>
+                </div>
+                <div className="text-xs uppercase tracking-widest text-gray-600 mt-1">
+                  {label}
+                </div>
               </div>
-              <div className="text-xs uppercase tracking-widest text-gray-600 mt-1">
-                {label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+        {/* ── End left column ── */}
+
+        {/* 3D Robot — right side */}
+        <div className="hidden lg:flex flex-1 items-center justify-center" style={{ height: "500px" }}>
+          <RobotModel />
+        </div>
+
       </div>
+      {/* ── End 2-column row ── */}
 
       {/* Scroll Indicator */}
       <motion.div

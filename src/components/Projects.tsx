@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import useTilt from "../hooks/useTilt";
 
 const projects = [
   {
@@ -132,6 +133,128 @@ const tagText: Record<string, string> = {
   "Mechanical & Control": "#fc814a",
 };
 
+
+// Separate component so useTilt hook is called correctly (not inside map)
+const ProjectCard = ({
+  p,
+  index,
+  onClick,
+}: {
+  p: Project;
+  index: number;
+  onClick: () => void;
+}) => {
+  const tilt = useTilt(6);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      viewport={{ once: true }}
+    >
+      <div
+        ref={tilt.ref}
+        onClick={onClick}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={(e) => {
+          tilt.onMouseLeave();
+          e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+          e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+        onMouseEnter={(e) => {
+          const color = tagText[p.tag] ?? "#f5c842";
+          e.currentTarget.style.borderColor = color + "33";
+          e.currentTarget.style.background = color + "06";
+          e.currentTarget.style.boxShadow = "0 8px 40px " + color + "10";
+        }}
+        className="tilt-card group cursor-pointer rounded-xl p-7 border flex flex-col justify-between h-full"
+        style={{
+          background: "rgba(255,255,255,0.02)",
+          borderColor: "rgba(255,255,255,0.07)",
+        }}
+      >
+        {/* Top row */}
+        <div>
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-2">
+              <span
+                className="text-xs px-2.5 py-1 rounded-full uppercase tracking-wider"
+                style={{
+                  background: tagColors[p.tag] ?? "rgba(245,200,66,0.08)",
+                  color: tagText[p.tag] ?? "#f5c842",
+                  border: `1px solid ${tagText[p.tag] ?? "#f5c842"}22`,
+                }}
+              >
+                {p.tag}
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              {p.status && (
+                <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                  <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                  {p.status}
+                </span>
+              )}
+              <span className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.1)" }}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-semibold mb-3" style={{ color: "#f0ece0" }}>
+            {p.title}
+          </h3>
+
+          <p className="text-sm text-gray-500 leading-relaxed mb-5">
+            {p.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {p.tech.slice(0, 3).map((t) => (
+              <span
+                key={t}
+                className="text-xs px-2.5 py-1 rounded-md"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  color: "#6b7280",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                {t}
+              </span>
+            ))}
+            {p.tech.length > 3 && (
+              <span
+                className="text-xs px-2.5 py-1 rounded-md"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  color: "#6b7280",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                +{p.tech.length - 3} more
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div
+          className="flex items-center gap-2 mt-7 text-xs uppercase tracking-widest transition-all duration-300 group-hover:gap-3"
+          style={{ color: tagText[p.tag] ?? "#f5c842" }}
+        >
+          <span>View Details</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -206,113 +329,12 @@ const Projects = () => {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-5">
           {projects.map((p, index) => (
-            <motion.div
+            <ProjectCard
               key={p.title}
+              p={p}
+              index={index}
               onClick={() => setSelectedProject(p)}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              viewport={{ once: true }}
-              className="group cursor-pointer rounded-xl p-7 border flex flex-col justify-between transition-all duration-300"
-              style={{
-                background: "rgba(255,255,255,0.02)",
-                borderColor: "rgba(255,255,255,0.07)",
-              }}
-              onMouseEnter={(e) => {
-                const color = tagText[p.tag] ?? "#f5c842";
-                e.currentTarget.style.borderColor = color + "33";
-                e.currentTarget.style.background = color + "06";
-                e.currentTarget.style.boxShadow = "0 8px 40px " + color + "10";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
-                e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              {/* Top row */}
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="text-xs px-2.5 py-1 rounded-full uppercase tracking-wider"
-                      style={{
-                        background: tagColors[p.tag] ?? "rgba(245,200,66,0.08)",
-                        color: tagText[p.tag] ?? "#f5c842",
-                        border: `1px solid ${tagText[p.tag] ?? "#f5c842"}22`,
-                      }}
-                    >
-                      {p.tag}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {p.status && (
-                      <span className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <span className="dot-breathe w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                        {p.status}
-                      </span>
-                    )}
-                    <span
-                      className="text-xs font-mono"
-                      style={{ color: "rgba(255,255,255,0.1)" }}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                </div>
-
-                <h3
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: "#f0ece0" }}
-                >
-                  {p.title}
-                </h3>
-
-                <p className="text-sm text-gray-500 leading-relaxed mb-5">
-                  {p.description}
-                </p>
-
-                {/* Tech pills */}
-                <div className="flex flex-wrap gap-2">
-                  {p.tech.slice(0, 3).map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs px-2.5 py-1 rounded-md"
-                      style={{
-                        background: "rgba(255,255,255,0.04)",
-                        color: "#6b7280",
-                        border: "1px solid rgba(255,255,255,0.07)",
-                      }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                  {p.tech.length > 3 && (
-                    <span
-                      className="text-xs px-2.5 py-1 rounded-md"
-                      style={{
-                        background: "rgba(255,255,255,0.04)",
-                        color: "#6b7280",
-                        border: "1px solid rgba(255,255,255,0.07)",
-                      }}
-                    >
-                      +{p.tech.length - 3} more
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* CTA */}
-              <div
-                className="flex items-center gap-2 mt-7 text-xs uppercase tracking-widest transition-all duration-300 group-hover:gap-3"
-                style={{ color: tagText[p.tag] ?? "#f5c842" }}
-              >
-                <span>View Details</span>
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </motion.div>
+            />
           ))}
         </div>
       </div>

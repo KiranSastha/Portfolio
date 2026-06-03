@@ -20,6 +20,7 @@ const experiences = [
       "Building hands-on depth in robotics, autonomous systems, and control engineering.",
     ],
     active: true,
+    driveLink: "", // paste NIT Calicut internship certificate/offer letter Drive link here
   },
   {
     title: "Solar and Water Systems Intern",
@@ -39,8 +40,17 @@ const experiences = [
       "Contributed to the integration of renewable energy and water purification solutions, gaining hands-on engineering field experience.",
     ],
     active: false,
+    driveLink: "https://drive.google.com/file/d/13lPgRfQS8_l7jB7uBY33Wape7f1subhi/view?usp=sharing",
   },
 ];
+
+const CertIcon = ({ color }: { color: string }) => (
+  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+    <path d="M4 2h6l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 2v4h4" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 9h4M6 11h2" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+  </svg>
+);
 
 const Experience = () => {
   return (
@@ -242,6 +252,34 @@ const Experience = () => {
                       ))}
                     </div>
                   </div>
+
+                  {/* Certificate button */}
+                  {exp.driveLink && (
+                    <div className="mt-4 pt-4 border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+                      <a
+                        href={exp.driveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs px-4 py-2 rounded-md border transition-all duration-200 hover:-translate-y-0.5"
+                        style={{
+                          borderColor: exp.color + "44",
+                          color: exp.color,
+                          background: exp.color + "08",
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = exp.color + "18";
+                          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px " + exp.color + "20";
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = exp.color + "08";
+                          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                        }}
+                      >
+                        <CertIcon color={exp.color} />
+                        View Internship Certificate
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -12,6 +12,7 @@ import ScrollProgress from "../components/ScrollProgress";
 import TerminalIntro from "../components/TerminalIntro";
 import NoiseOverlay from "../components/NoiseOverlay";
 import SectionDivider from "../components/SectionDivider";
+import BackToTop from "../components/BackToTop";
 
 const Index = () => {
   const [introComplete, setIntroComplete] = useState(false);
@@ -35,6 +36,7 @@ const Index = () => {
       {/* Global overlays */}
       <MouseTracker />
       <ScrollProgress />
+      <BackToTop />
       <NoiseOverlay />
 
       {/* Terminal intro — shows once per session */}

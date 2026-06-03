@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import SkillsRadar from "./SkillsRadar";
+import TechIcons from "./TechIcons";
 
 const timelineData = [
   {
@@ -35,8 +37,8 @@ const skills = [
   { label: "Embedded Systems", sub: "Arduino, ESP32, GPIO, UART, I2C, SPI", icon: "⚡", color: "#f5c842" },
   { label: "Robotics & SLAM", sub: "ROS2, Gazebo, Navigation, Perception", icon: "⚙️", color: "#63b3ed" },
   { label: "Computer Vision", sub: "OpenCV, CNN, Real-time Detection", icon: "◎", color: "#9ae6b4" },
-  { label: "PCB & Hardware", sub: "KiCad, EasyEDA, Circuit Design", icon: "▦", color: "#fc814a" },
-  { label: "PLC & SCADA", sub: "Siemens, Delta, HMI", icon: "⊞", color: "#c084fc" },
+  { label: "PCB & Hardware", sub: "KiCad, Altium, Circuit Design", icon: "▦", color: "#fc814a" },
+  { label: "PLC & SCADA", sub: "Siemens, Allen Bradley, HMI", icon: "⊞", color: "#c084fc" },
   { label: "Machine Learning", sub: "Python, MATLAB, CNN Models", icon: "◈", color: "#f472b6" },
 ];
 
@@ -185,56 +187,30 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Skills Grid */}
+            {/* Skills Radar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
               viewport={{ once: true }}
             >
-              <p className="text-xs uppercase tracking-widest text-gray-600 mb-4">
-                Core Skills
+              <SkillsRadar />
+              <p className="text-xs text-gray-700 text-center mt-3">
+                Hover each point to see proficiency level
               </p>
-              <div className="grid grid-cols-2 gap-3">
-                {skills.map((skill, i) => (
-                  <motion.div
-                    key={skill.label}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.07 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3 p-4 rounded-lg border transition-all duration-300 cursor-default"
-                    style={{
-                      borderColor: "rgba(255,255,255,0.06)",
-                      background: "rgba(255,255,255,0.02)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = skill.color + "44";
-                      e.currentTarget.style.background = skill.color + "08";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                      e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                    }}
-                  >
-                    <div
-                      className="w-7 h-7 rounded-md flex items-center justify-center shrink-0 text-sm"
-                      style={{ background: skill.color + "15", color: skill.color }}
-                    >
-                      {skill.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium" style={{ color: "#f0ece0" }}>
-                        {skill.label}
-                      </p>
-                      <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
-                        {skill.sub}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </motion.div>
+
+            {/* Tech Stack Icons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mt-10"
+            >
+              <TechIcons />
+            </motion.div>
+
           </div>
 
           {/* ── RIGHT -- Education Timeline ── */}
