@@ -2,11 +2,36 @@ import { motion } from "framer-motion";
 
 const certifications = [
   {
+    date: "01/2026 - 04/2026",
+    title: "Introduction to Internet of Things",
+    provider: "NPTEL",
+    tag: "Embedded & IoT",
+    color: "#f5c842",
+    driveLink: "https://drive.google.com/file/d/1QA_9esHMcouj3rCmhrQ-5aJuNjDsi41g/view?usp=sharing",
+  },
+  {
+    date: "03/2026",
+    title: "Web Development",
+    provider: "Udemy",
+    tag: "Web Design",
+    color: "#4FD1C5",
+    driveLink: "https://drive.google.com/file/d/1SIwcxeDs9fjPciLz0FoCDtvZBy5oDB3n/view?usp=sharing",
+  },
+  {
+    date: "01/2026",
+    title: "SCADA - Design, Program and Interface",
+    provider: "Udemy",
+    tag: "PLC & SCADA",
+    color: "#F687B3",
+    driveLink: "https://drive.google.com/file/d/1nTjavTbOKYBhBO6M0hjQI_HfAGo7O8xu/view?usp=sharing",
+  },
+  {
     date: "09/2025",
     title: "OpenCV Bootcamp",
     provider: "OpenCV University",
     tag: "Computer Vision",
     color: "#63b3ed",
+    driveLink: "https://drive.google.com/file/d/1xVyniGy_ov6Kwo_SdaeXpkgIZ4frqACP/view?usp=sharing",
   },
   {
     date: "03/2025",
@@ -14,6 +39,7 @@ const certifications = [
     provider: "Study World College of Engineering",
     tag: "Embedded & IoT",
     color: "#f5c842",
+    driveLink: "nnn",
   },
   {
     date: "02/2025",
@@ -21,6 +47,7 @@ const certifications = [
     provider: "Kongu Engineering College",
     tag: "DevOps",
     color: "#9ae6b4",
+    driveLink: "https://drive.google.com/file/d/104-bhruJDBXgs-DJtkzKonXUqfNjyYPF/view?usp=sharing",
   },
   {
     date: "10/2024",
@@ -28,6 +55,7 @@ const certifications = [
     provider: "Karpagam Engineering College",
     tag: "Data Analytics",
     color: "#fc814a",
+    driveLink: "https://drive.google.com/file/d/1ChDZoH-UvqMIfUSrWctJ9tmS8yINRKjp/view?usp=sharing",
   },
   {
     date: "08/2024 - 11/2024",
@@ -35,6 +63,7 @@ const certifications = [
     provider: "Coursera -- Google",
     tag: "Systems",
     color: "#9ae6b4",
+    driveLink: "https://drive.google.com/file/d/1DbKh3guOISmzogGNB80lLlihedJxvDyN/view?usp=sharing",
   },
   {
     date: "03/2024 - 06/2024",
@@ -42,6 +71,7 @@ const certifications = [
     provider: "Coursera -- DeepLearning.AI",
     tag: "Machine Learning",
     color: "#c084fc",
+    driveLink: "https://drive.google.com/file/d/1r2itdvRYeOYVKKX2vhCnEQTYyJWRsB5A/view?usp=sharing",
   },
 ];
 
@@ -54,6 +84,7 @@ const events = [
       "Presented the Smart Fertilizer Application System Using Machine Learning -- CNN-based plant disease detection with IoT-enabled automation.",
     type: "Conference",
     color: "#f5c842",
+    driveLink: "", // paste certificate/participation letter Drive link here
   },
   {
     date: "08/2024",
@@ -63,8 +94,18 @@ const events = [
       "Presented the Alignment of Solar Panel using Hydraulics -- autonomous hydraulic actuation and efficiency-oriented solar tracking.",
     type: "Symposium",
     color: "#63b3ed",
+    driveLink: "",
   },
 ];
+
+// Certificate icon
+const CertIcon = ({ color }: { color: string }) => (
+  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+    <path d="M4 2h6l4 4v9a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 2v4h4" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 9h4M6 11h2" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
+  </svg>
+);
 
 const StarIcon = ({ color }: { color: string }) => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -192,16 +233,38 @@ const Achievements = () => {
                     </span>
                     <span className="text-xs text-gray-600">{item.date}</span>
                   </div>
-                  <h4
-                    className="text-sm font-semibold mb-1"
-                    style={{ color: "#f0ece0" }}
-                  >
+                  <h4 className="text-sm font-semibold mb-1" style={{ color: "#f0ece0" }}>
                     {item.title}
                   </h4>
                   <p className="text-xs text-gray-500 mb-2">{item.provider}</p>
-                  <p className="text-xs text-gray-600 leading-relaxed">
+                  <p className="text-xs text-gray-600 leading-relaxed mb-3">
                     {item.description}
                   </p>
+                  {/* Certificate button — only shows when driveLink is set */}
+                  {item.driveLink && (
+                    <a
+                      href={item.driveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border transition-all duration-200 hover:-translate-y-0.5"
+                      style={{
+                        borderColor: item.color + "44",
+                        color: item.color,
+                        background: item.color + "08",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = item.color + "18";
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px " + item.color + "20";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = item.color + "08";
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                      }}
+                    >
+                      <CertIcon color={item.color} />
+                      View Certificate
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -253,16 +316,39 @@ const Achievements = () => {
                   {item.tag}
                 </span>
 
-                <h4
-                  className="text-sm font-semibold leading-snug"
-                  style={{ color: "#f0ece0" }}
-                >
+                <h4 className="text-sm font-semibold leading-snug" style={{ color: "#f0ece0" }}>
                   {item.title}
                 </h4>
 
-                <div className="mt-auto">
+                <div className="mt-auto space-y-2">
                   <p className="text-xs text-gray-500">{item.provider}</p>
-                  <p className="text-xs text-gray-700 mt-0.5">{item.date}</p>
+                  <p className="text-xs text-gray-700">{item.date}</p>
+
+                  {/* Certificate button — only shows when driveLink is set */}
+                  {item.driveLink && (
+                    <a
+                      href={item.driveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border transition-all duration-200 hover:-translate-y-0.5 mt-1"
+                      style={{
+                        borderColor: item.color + "44",
+                        color: item.color,
+                        background: item.color + "08",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = item.color + "18";
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px " + item.color + "20";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = item.color + "08";
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                      }}
+                    >
+                      <CertIcon color={item.color} />
+                      View Certificate
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

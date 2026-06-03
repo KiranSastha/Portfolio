@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -110,6 +111,8 @@ const Navbar = () => {
                 Intern @ NIT Calicut
               </span>
             </div>
+
+            <ThemeToggle />
 
             {/* Resume Button */}
             <a

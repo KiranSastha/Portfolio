@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const socials = [
   {
@@ -47,6 +48,14 @@ const socials = [
 ];
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("sasthakiran046@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section
       id="contact"
@@ -75,6 +84,17 @@ const Contact = () => {
 
       <div className="relative z-10 max-w-4xl mx-auto">
 
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-xs uppercase tracking-widest mb-4 text-center"
+          style={{ color: "#f5c842" }}
+        >
+          -- Contact
+        </motion.p>
 
         {/* Heading */}
         <motion.h2
@@ -109,24 +129,54 @@ const Contact = () => {
           viewport={{ once: true }}
           className="flex justify-center mb-16"
         >
-          <a
-            href="mailto:sasthakiran046@gmail.com"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-sm uppercase tracking-widest bg-yellow-400 text-black transition-all duration-200 hover:-translate-y-1"
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 40px rgba(245,200,66,0.35)";
-              (e.currentTarget as HTMLAnchorElement).style.background = "#ffe066";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-              (e.currentTarget as HTMLAnchorElement).style.background = "#f5c842";
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            Get in Touch
-          </a>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href="mailto:sasthakiran046@gmail.com"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-sm uppercase tracking-widest bg-yellow-400 text-black transition-all duration-200 hover:-translate-y-1"
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 12px 40px rgba(245,200,66,0.35)";
+                (e.currentTarget as HTMLAnchorElement).style.background = "#ffe066";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLAnchorElement).style.background = "#f5c842";
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              Get in Touch
+            </a>
+
+            {/* Copy email button */}
+            <button
+              onClick={copyEmail}
+              className="inline-flex items-center gap-2 px-5 py-4 rounded-xl text-sm border transition-all duration-200 hover:-translate-y-1"
+              style={{
+                borderColor: copied ? "rgba(154,230,180,0.4)" : "rgba(255,255,255,0.1)",
+                color: copied ? "#9ae6b4" : "#6b7280",
+                background: copied ? "rgba(154,230,180,0.06)" : "transparent",
+              }}
+            >
+              {copied ? (
+                <>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8l3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+                    <path d="M3 11V3a1 1 0 011-1h8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                  Copy Email
+                </>
+              )}
+            </button>
+          </div>
         </motion.div>
 
         {/* Divider with label */}
