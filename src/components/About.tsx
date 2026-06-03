@@ -33,7 +33,7 @@ const timelineData = [
   },
 ];
 
-const skills = [
+const _skills = [
   { label: "Embedded Systems", sub: "Arduino, ESP32, GPIO, UART, I2C, SPI", icon: "⚡", color: "#f5c842" },
   { label: "Robotics & SLAM", sub: "ROS2, Gazebo, Navigation, Perception", icon: "⚙️", color: "#63b3ed" },
   { label: "Computer Vision", sub: "OpenCV, CNN, Real-time Detection", icon: "◎", color: "#9ae6b4" },

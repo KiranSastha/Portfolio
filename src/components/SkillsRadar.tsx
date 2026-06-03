@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useSpring, useTransform, animate } from "framer-motion";
+import { motion, animate } from "framer-motion";
 
 const skills = [
   { label: "Embedded Systems", value: 88 },
