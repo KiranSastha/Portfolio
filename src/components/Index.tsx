@@ -7,7 +7,7 @@ import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Achievements from "../components/Achievements";
 import Contact from "../components/Contact";
-import MouseTracker from "../components/MouseTracker";
+import MouseTracker from "../components/MouseTrackerV2";
 import ScrollProgress from "../components/ScrollProgress";
 import TerminalIntro from "../components/TerminalIntro";
 import NoiseOverlay from "../components/NoiseOverlay";
